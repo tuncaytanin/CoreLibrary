@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace FluentValidationApp.Web.Models
 {
+
     public class Customer
     {
         public int Id { get; set; }
@@ -17,10 +18,13 @@ namespace FluentValidationApp.Web.Models
 
         public Gender Gender { get; set; }
 
+        public CreditCard CreditCard { get; set; }
 
         public string FullName2()
         {
             return $"{Name} -- {Email} -- {Age}";
         }
+
+
     }
 }

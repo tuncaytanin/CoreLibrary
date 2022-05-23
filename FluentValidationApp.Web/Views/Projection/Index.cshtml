@@ -1,0 +1,27 @@
+﻿@model FluentValidationApp.Web.Dtos.EventDateDto
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form asp-action="Index" class="form-group">
+    <div class="form-group">
+        <label asp-for="Day" class="control-label"></label>
+        <input asp-for="Day" class="form-control" />
+        <span asp-validation-for="Day" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Month" class="control-label"></label>
+        <input asp-for="Month" class="form-control" />
+        <span asp-validation-for="Month" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Year" class="control-label"></label>
+        <input asp-for="Year" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Kaydet" class="btn btn-primary" />
+    </div>
+</form>
+<h1>@ViewBag.date</h1>
+

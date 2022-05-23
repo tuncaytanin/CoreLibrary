@@ -13,5 +13,8 @@ namespace FluentValidationApp.Web.Dtos
         public int Yas { get; set; }
 
         public string FullName { get; set; }
+
+        public string Number { get; set; }
+        public DateTime ValidatDate { get; set; }
     }
 }
