@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Smidge;
 using Smidge.Options;
 using Smidge.Cache;
+using Hangfire;
+using SmidgeApp.Web.Services;
 
 namespace SmidgeApp.Web
 {
@@ -26,8 +28,12 @@ namespace SmidgeApp.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddScoped<IEmailSender, EmailSender>();
+            services.AddHangfire(config =>config.UseSqlServerStorage(Configuration.GetConnectionString("HangFireConnection")));
             services.AddSmidge(Configuration.GetSection("smidge"));
             services.AddControllersWithViews();
+            services.AddHangfireServer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +51,9 @@ namespace SmidgeApp.Web
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            //www.mysite.com/hangfire
+            app.UseHangfireDashboard("/hangfire");
 
             app.UseRouting();
 
